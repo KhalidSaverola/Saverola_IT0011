@@ -1,34 +1,33 @@
 import csv
 
-# Load currency exchange rates from currency.csv
-def load_currency_rates(file_path):
-    exchange_rates = {}
-    with open(file_path, mode='r') as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip header
+def load_currency_rates(filename):
+    rates = {}
+    with open(filename, newline='', encoding='ISO-8859-1') as csvfile:
+        reader = csv.reader(csvfile)
+        next(reader)
         for row in reader:
-            currency, rate = row
-            exchange_rates[currency] = float(rate)
-    return exchange_rates
+            currency_code, currency_name, rate = row
+            rates[currency_code] = float(rate)
+    return rates
 
-# Convert USD to selected currency
-def convert_currency(amount, target_currency, rates):
+def convert_currency(usd_amount, target_currency, rates):
     if target_currency in rates:
-        return amount * rates[target_currency]
+        return usd_amount * rates[target_currency]
     else:
         return None
 
-# Main Program
-file_path = "C:\Users\lenovo\Downloads\currency.csv"
-rates = load_currency_rates(file_path)
+
+filename = "currency.csv"
+rates = load_currency_rates(filename)
+
 
 usd_amount = float(input("How much dollar do you have? "))
-target_currency = input("What currency do you want to have? ")
+target_currency = input("What currency you want to have? ").upper()
 
 converted_amount = convert_currency(usd_amount, target_currency, rates)
 
 if converted_amount is not None:
-    print(f"\nDollar: {usd_amount} USD")
+    print(f"Dollar: {usd_amount} USD")
     print(f"{target_currency}: {converted_amount}")
 else:
-    print("Currency not found in the list.")
+    print("Currency not found.")
