@@ -138,6 +138,7 @@ def exit_program():
 
 window = tk.Tk()
 window.title("User Registration System")
+window.title("GUI Program made by Khalid Saverola")
 window.geometry("400x550")
 window.configure(bg="#f0f0f0")
 
@@ -177,7 +178,5 @@ tk.Button(button_frame, text="Delete Record", command=delete_record, width=20, h
 tk.Button(button_frame, text="Clear All Records", command=clear_all_records, width=20, height=2, bg="#9E9E9E", fg="white", font=("Arial", 12, "bold")).grid(row=4, column=0, padx=10, pady=10)
 tk.Button(button_frame, text="Exit", command=exit_program, width=20, height=2, bg="#f44336", fg="white", font=("Arial", 12, "bold")).grid(row=5, column=0, padx=10, pady=10)
 
-footer_label = tk.Label(window, text="Program made by Khalid Saverola", font=("Arial", 10, "italic"), bg="#f0f0f0")
-footer_label.pack(side=tk.BOTTOM, pady=5)
 
 window.mainloop()
